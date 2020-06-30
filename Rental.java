@@ -8,57 +8,58 @@ public class Rental extends Renter {
     double totalAmount;
     double bikeAmount;
     double extraAmount; // for GPS or Insurance
+    String insuranceResult;
+    String gpsResult;
+    Bike bike;
 
     public void showResults() {
         // Display these results when method is called
-        System.out.println(
-                "Hello " + getName() + ", thanks for renting " + bikeType + " for " + rentalDuration + " hours");
+        System.out.println("Hello " + getName() + ", thanks for renting " + bikeType + " for " + rentalDuration + " hours");
 
         // insurance
         if (insurance == 0) {
             extraAmount += 5;
-            System.out.println("Insurance: " + " Required ");
+            insuranceResult = "Required";
         } else if (insurance == 1) {
-            extraAmount += 0;
-            System.out.println("Insurance: " + " Not Needed");
+            insuranceResult = "Not Needed";
         }
 
         // Bike Gps
         if (bikeGps == 0) {
             extraAmount += 5;
-            System.out.println("GPS: " + " Required ");
+            gpsResult = "Required";
         } else if (bikeGps == 1) {
-            extraAmount += 0;
-            System.out.println("GPS: " + " Not Needed");
+            gpsResult = "Not Needed";
         }
 
-        // Selecting Bike Type and computing
+        System.out.println("Insurance: " + insuranceResult);
+        System.out.println("GPS: " + gpsResult);
+
+        // Selecting Bike Type
         switch (bikeType) {
             case "Mountain bike":
-                bikeAmount = 10.5 * Integer.parseInt(rentalDuration);
+                bike = new MountainBike();
                 break;
             case "7-speed race bike":
-                bikeAmount = 13.0 * Integer.parseInt(rentalDuration);
+                bike = new SevenSpeedRaceBike();
                 break;
             case "Tandem bike":
-                bikeAmount = 15.0 * Integer.parseInt(rentalDuration);
+                bike = new TandemBike();
                 break;
             default:
                 System.out.println("No Bike Type");
         }
-
         // computing rental subtotal for renting the bike
+        bikeAmount = bike.getBikeAmt(rentalDuration);
         rentalSubTotal = bikeAmount + extraAmount;
         System.out.println("Rental Subtotal: RM" + rentalSubTotal); // outputs it to the console
 
-        // computing rental Tax for borrowing the tax and the tax rate is 6% of the
-        // amount
+        // computing rental Tax for borrowing the tax and the tax rate is 6% of the amount
         rentTax = rentalSubTotal * 6 / 100;
         System.out.println("Tax Amount: RM" + rentTax);
 
         // computing the total Amount of everything tax including subtotal and tax
-        totalAmount = rentTax + rentalSubTotal;
-        System.out.println("Total Amount: RM" + totalAmount);
+        System.out.println("Total Amount: RM" + (Double) (rentTax + rentalSubTotal));
     }
 
     // Getters and Setters
@@ -66,7 +67,7 @@ public class Rental extends Renter {
         return rentalDuration;
     }
 
-    public void setRentalDuration(String rentalDuration) {
+    public void setRentalDuration(final String rentalDuration) {
         this.rentalDuration = rentalDuration;
     }
 
@@ -74,7 +75,7 @@ public class Rental extends Renter {
         return bikeType;
     }
 
-    public void setBikeType(String bikeType) {
+    public void setBikeType(final String bikeType) {
         this.bikeType = bikeType;
     }
 
@@ -82,7 +83,7 @@ public class Rental extends Renter {
         return insurance;
     }
 
-    public void setInsurance(int insurance) {
+    public void setInsurance(final int insurance) {
         this.insurance = insurance;
     }
 
@@ -90,7 +91,7 @@ public class Rental extends Renter {
         return bikeGps;
     }
 
-    public void setBikeGps(int bikeGps) {
+    public void setBikeGps(final int bikeGps) {
         this.bikeGps = bikeGps;
     }
 
@@ -98,7 +99,7 @@ public class Rental extends Renter {
         return rentalSubTotal;
     }
 
-    public void setRentalSubTotal(double rentalSubTotal) {
+    public void setRentalSubTotal(final double rentalSubTotal) {
         this.rentalSubTotal = rentalSubTotal;
     }
 
@@ -106,7 +107,7 @@ public class Rental extends Renter {
         return rentTax;
     }
 
-    public void setRentTax(double rentTax) {
+    public void setRentTax(final double rentTax) {
         this.rentTax = rentTax;
     }
 }

@@ -3,10 +3,6 @@ public class Renter {
     private String name;
     private String matric;
     private String phoneNum;
-    private String address;
-    private String gender;
-    private String yearofStudy;
-    private String faculty;
 
     public Renter() {
     }
@@ -22,10 +18,6 @@ public class Renter {
         this.name = name;
         this.matric = matric;
         this.phoneNum = phoneNum;
-        this.address = address;
-        this.gender = gender;
-        this.yearofStudy = yearofStudy;
-        this.faculty = faculty;
     }
 
     // overloading my method
@@ -63,7 +55,4 @@ public class Renter {
     public void setphoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
-
-
-
 }
