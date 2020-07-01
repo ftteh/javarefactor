@@ -40,7 +40,7 @@ public class BikeRental {
         rental.setBikeGps(gps);
 
         user.showResults();
-        rental.showResults();
+        rental.rentalSummary();
 
         // prompt the user to rate
         String rate = JOptionPane.showInputDialog(frame, "Please rate our service from 1-10 (10= Most satisfied)?");

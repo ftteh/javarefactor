@@ -13,24 +13,10 @@ public class Rental extends Renter {
     public void rentalSummary() {
         // Display these results when method is called
         System.out.println("Hello " + getName() + ", thanks for renting " + bikeType + " for " + rentalDuration + " hours");
-
         System.out.println("Insurance: " + checkExtras(insurance));
         System.out.println("GPS: " + checkExtras(bikeGps));
-
-        // Selecting Bike Type
-        switch (bikeType) {
-            case "Mountain bike":
-                bike = new MountainBike();
-                break;
-            case "7-speed race bike":
-                bike = new SevenSpeedRaceBike();
-                break;
-            case "Tandem bike":
-                bike = new TandemBike();
-                break;
-            default:
-                System.out.println("No Bike Type");
-        }
+        selectBike(bikeType);
+        
         // computing rental subtotal for renting the bike
         bikeAmount = bike.getBikeAmt(rentalDuration);
         rentalSubTotal = bikeAmount + extraAmount;
@@ -50,6 +36,23 @@ public class Rental extends Renter {
             return "Required";
         } else {
             return "Not Needed";
+        }
+    }
+
+    // Selecting Bike Type
+    public void selectBike(String type){
+        switch (type) {
+            case "Mountain bike":
+                bike = new MountainBike();
+                break;
+            case "7-speed race bike":
+                bike = new SevenSpeedRaceBike();
+                break;
+            case "Tandem bike":
+                bike = new TandemBike();
+                break;
+            default:
+                System.out.println("No Bike Type");
         }
     }
 
