@@ -8,32 +8,14 @@ public class Rental extends Renter {
     double totalAmount;
     double bikeAmount;
     double extraAmount; // for GPS or Insurance
-    String insuranceResult;
-    String gpsResult;
     Bike bike;
 
-    public void showResults() {
+    public void rentalSummary() {
         // Display these results when method is called
         System.out.println("Hello " + getName() + ", thanks for renting " + bikeType + " for " + rentalDuration + " hours");
 
-        // insurance
-        if (insurance == 0) {
-            extraAmount += 5;
-            insuranceResult = "Required";
-        } else if (insurance == 1) {
-            insuranceResult = "Not Needed";
-        }
-
-        // Bike Gps
-        if (bikeGps == 0) {
-            extraAmount += 5;
-            gpsResult = "Required";
-        } else if (bikeGps == 1) {
-            gpsResult = "Not Needed";
-        }
-
-        System.out.println("Insurance: " + insuranceResult);
-        System.out.println("GPS: " + gpsResult);
+        System.out.println("Insurance: " + checkExtras(insurance));
+        System.out.println("GPS: " + checkExtras(bikeGps));
 
         // Selecting Bike Type
         switch (bikeType) {
@@ -60,6 +42,15 @@ public class Rental extends Renter {
 
         // computing the total Amount of everything tax including subtotal and tax
         System.out.println("Total Amount: RM" + (Double) (rentTax + rentalSubTotal));
+    }
+
+    public String checkExtras(int addOn) {
+        if (addOn == 0) {
+            extraAmount += 5;
+            return "Required";
+        } else {
+            return "Not Needed";
+        }
     }
 
     // Getters and Setters
