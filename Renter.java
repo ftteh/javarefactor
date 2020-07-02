@@ -20,8 +20,7 @@ public class Renter {
         this.phoneNum = phoneNum;
     }
 
-    // overloading my method
-    public void showResults() {
+    public void renterInfo() {
         System.out.println("====================");
         System.out.println("User information");
         System.out.println("Name: " + name);

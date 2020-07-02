@@ -11,14 +11,11 @@ public class Rental extends Renter{
     Bike bike;
     Renter renter;
 
-    
-    public String getName(){
-        return this.renter.getName();
-    }
-
     public void rentalSummary() {
+        renter.renterInfo();
+
         // Display these results when method is called
-        System.out.println("Hello " + getName() + ", thanks for renting " + bikeType + " for " + rentalDuration + " hours");
+        System.out.println("Hello " + renter.getName() + ", thanks for renting " + bikeType + " for " + rentalDuration + " hours");
         System.out.println("Insurance: " + checkExtras(insurance));
         System.out.println("GPS: " + checkExtras(bikeGps));
         selectBike(bikeType);
@@ -109,5 +106,13 @@ public class Rental extends Renter{
 
     public void setRentTax(final double rentTax) {
         this.rentTax = rentTax;
+    }
+
+    public Renter getRenter() {
+        return renter;
+    }
+
+    public void setRenter(Renter renter) {
+        this.renter = renter;
     }
 }

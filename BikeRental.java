@@ -18,7 +18,8 @@ public class BikeRental {
         String phoneNum = JOptionPane.showInputDialog(frame, "Please Enter Your Phone Number?");
 
         // instantiate user
-        rental.renter = new Renter(name, matric, phoneNum);
+        Renter user = new Renter(name, matric, phoneNum);
+        rental.setRenter(user);
 
         // prompt the user to enter Number of hours
         String hours = JOptionPane.showInputDialog(frame, "How many hours do you want to rent?");
@@ -39,7 +40,6 @@ public class BikeRental {
         int gps = JOptionPane.showConfirmDialog(null, "Do you need a GPS?", "GPS", JOptionPane.YES_NO_CANCEL_OPTION);
         rental.setBikeGps(gps);
 
-        rental.renter.showResults();
         rental.rentalSummary();
 
         // prompt the user to rate
