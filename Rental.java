@@ -1,4 +1,4 @@
-public class Rental extends Renter {
+public class Rental extends Renter{
     String rentalDuration;
     String bikeType;
     int insurance;
@@ -9,6 +9,12 @@ public class Rental extends Renter {
     double bikeAmount;
     double extraAmount; // for GPS or Insurance
     Bike bike;
+    Renter renter;
+
+    
+    public String getName(){
+        return this.renter.getName();
+    }
 
     public void rentalSummary() {
         // Display these results when method is called
