@@ -1,4 +1,4 @@
-public class Rental extends Renter{
+public class Rental {
     String rentalDuration;
     String bikeType;
     int insurance;
